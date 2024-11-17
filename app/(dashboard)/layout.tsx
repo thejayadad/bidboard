@@ -1,4 +1,5 @@
 import React from 'react'
+import Header from './_components/header/header';
 
 const layout = ({
     children,
@@ -7,6 +8,7 @@ const layout = ({
   }>) => {
   return (
     <div>
+      <Header />
         {children}
     </div>
   )
