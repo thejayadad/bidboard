@@ -9,14 +9,14 @@ interface Props {}
 const UpdateForm: React.FC<Props> = () => {
   const [weight, setWeight] = useState<string>('');  // Store the weight
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);  // Modal visibility
-  const [userId, setUserId] = useState<string>('67390bfcdd59c20db9828f70'); // Assuming the user ID is available
+  const [userId] = useState<string>('67390bfcdd59c20db9828f70'); // Assuming the user ID is available
 
   const handleOpenModal = () => setIsModalOpen(true); // Open modal
   const handleCloseModal = () => setIsModalOpen(false); // Close modal
 
   const handleWeightSubmit = (newWeight: string) => {
+    console.log("New weight submitted: ", newWeight);  // Debugging line
     setWeight(newWeight);  // Update the weight when submitted
-    console.log("Updated Weight:", newWeight); // Log the updated weight for debugging
 
     // Prepare the formData for submitting
     const formData = new FormData();
