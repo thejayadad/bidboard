@@ -12,7 +12,7 @@ interface UpdateUserWeightFormData {
 
 export const updateUserWeight = async (formData: FormData) => {
   // Explicitly typing the result of Object.fromEntries
-  const { weight, id } = Object.fromEntries(formData) as UpdateUserWeightFormData;
+  const { weight, id } = Object.fromEntries(formData) as unknown as UpdateUserWeightFormData;
 
   try {
     await connectDB();

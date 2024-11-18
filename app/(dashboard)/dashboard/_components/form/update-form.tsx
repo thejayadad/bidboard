@@ -1,7 +1,7 @@
 'use client'
 
-import React, { useState } from 'react';
-import FormModal from './form-modal';
+import React, { useState, useEffect } from 'react';
+import FormModal from './form-modal';  // Import your FormModal component
 import { updateUserWeight } from '@/lib/actions/user/update-user-weight';
 
 interface Props {}
@@ -9,13 +9,12 @@ interface Props {}
 const UpdateForm: React.FC<Props> = () => {
   const [weight, setWeight] = useState<string>('');  // Store the weight
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);  // Modal visibility
-  const [userId] = useState<string>('67390bfcdd59c20db9828f70'); // Assuming the user ID is available
+  const [userId] = useState<string>('67390bfcdd59c20db9828f70'); // Example user ID
 
   const handleOpenModal = () => setIsModalOpen(true); // Open modal
   const handleCloseModal = () => setIsModalOpen(false); // Close modal
 
   const handleWeightSubmit = (newWeight: string) => {
-    console.log("New weight submitted: ", newWeight);  // Debugging line
     setWeight(newWeight);  // Update the weight when submitted
 
     // Prepare the formData for submitting
@@ -28,6 +27,11 @@ const UpdateForm: React.FC<Props> = () => {
       console.log("Error submitting weight:", error);
     });
   };
+
+  // Debugging: Log the weight to ensure it's updating
+  useEffect(() => {
+    console.log("Current weight:", weight);
+  }, [weight]);
 
   return (
     <div className='bg-white p-4'>
@@ -51,7 +55,7 @@ const UpdateForm: React.FC<Props> = () => {
                 className="text-xl cursor-pointer text-blue-600 hover:underline"
                 onClick={handleOpenModal}  // Open modal when clicked
               >
-                {weight || "Not Set"} {/* Show the weight or "Not Set" */}
+                {weight} {/* Show the weight or "Not Set" */}
               </span>
             </div>
           </div>
